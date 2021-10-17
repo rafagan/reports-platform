@@ -1,0 +1,41 @@
+version: "3"
+
+volumes:
+  postgres_data: {}
+
+services:
+  database:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./reports-ws/.env
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    command: -p 5432
+
+  web:
+    image: reports-react-web
+    build: ./reports-react-web/
+    env_file:
+      - ./reports-react-web/.env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./reports-react-web/:/app
+
+  ws:
+    image: reports-ws
+    build: ./reports-ws/
+    env_file:
+      - ./reports-ws/.env
+    ports:
+      - "5000:5000"
+    links:
+      - database
+    depends_on:
+      - database
+    volumes:
+      - ./reports-ws/:/app
