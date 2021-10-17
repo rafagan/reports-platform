@@ -1,0 +1,8 @@
+[submodule "reports-react-web"]
+	path = reports-react-web
+    url = git@github.com:rafagan/reports-react-web.git
+
+
+[submodule "reports-ws"]
+	path = reports-ws
+	url = git@github.com:rafagan/reports-ws.git
