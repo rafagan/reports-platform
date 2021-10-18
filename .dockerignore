@@ -4,3 +4,4 @@ __pycache__/
 static
 .git/
 .DS_Store
+build/

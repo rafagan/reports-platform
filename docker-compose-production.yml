@@ -17,14 +17,11 @@ services:
     command: -p 5432
 
   web:
-    image: reports-react-web
-    build: ./reports-react-web/
-    env_file:
-      - ./reports-react-web/.env
+    image: nginx:latest
     ports:
-      - "3000:3000"
+      - "80:80"
     volumes:
-      - ./reports-react-web/:/app
+      - ./reports-react-web/build:/usr/share/nginx/html
 
   ws:
     image: reports-ws
@@ -39,4 +36,4 @@ services:
       - database
     volumes:
       - ./reports-ws/:/app
-    command: python3 /app/server/api.py
+    command: sh /app/deploy.sh
