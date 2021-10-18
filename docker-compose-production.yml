@@ -22,6 +22,9 @@ services:
       - "80:80"
     volumes:
       - ./reports-react-web/build:/usr/share/nginx/html
+    environment:
+    - PRODUCTION=1
+    
 
   ws:
     image: reports-ws

@@ -11,7 +11,11 @@ sudo gpasswd -a $USER docker
 sudo service docker restart
 sudo chmod -R 777 /var/run/docker.sock
 
+sudo apt install -y npm && sudo npm install --global yarn
+yarn && yarn build
+
 git clone --recurse-submodules https://github.com/rafagan/reports-platform.git
 docker-compose -f docker-compose-production.yml up
 
 docker exec -it 86b3bc52764d  /bin/bash
+psql -U report report
