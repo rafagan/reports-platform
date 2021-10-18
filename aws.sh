@@ -9,3 +9,6 @@ sudo apt install docker-ce docker-compose -y
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo service docker restart
+
+git clone --recurse-submodules https://github.com/rafagan/reports-platform.git
+docker-compose -f docker-compose-production.yml up
