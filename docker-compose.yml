@@ -19,8 +19,6 @@ services:
   web:
     image: reports-react-web
     build: ./reports-react-web/
-    env_file:
-      - ./reports-react-web/.env
     ports:
       - "3000:3000"
     volumes:
